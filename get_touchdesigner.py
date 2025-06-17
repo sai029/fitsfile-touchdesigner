@@ -2,7 +2,8 @@ import numpy as np
 from PIL import Image
 
 #fitsデータの受け取り
-data = hdul[0].data
+data = [[cell.val for cell in row] for row in op('null1').rows()]
+
 
 # 画像スケーリング（0〜255に正規化）
 data = np.nan_to_num(data)  # NaN除去
