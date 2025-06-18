@@ -36,3 +36,9 @@ file_name = "your-fits-file.fits" # アップロードしたファイル名に�
 https://qiita.com/iwaken71/items/f4c9e1c3b789d19657ae
 
 #### 2.Text DATにget_touchdesigner.pyを記入
+
+#### 3.null DATにOSC in DATを接続
+
+#### 4.画像出力用のmovie file in CHOPを配置
+
+#### 5.Text DATのget_touchdesigner.pyを実行

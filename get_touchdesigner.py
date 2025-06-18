@@ -24,4 +24,5 @@ for i in range(len(data[0])):
 
     # 画像の表示
     image = Image.fromarray(scaled_data)
-    image.show()
+    image.save('/tmp/fits_img.png')
+    op('moviefilein1').par.file = '/tmp/fits_img.png'
