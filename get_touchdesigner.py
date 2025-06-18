@@ -7,15 +7,18 @@ import re
 data = [[cell.val for cell in row] for row in op('null1').rows()]
 
 # 正規表現で /data_chunk の後の文字列だけ抽出
-extracted = ""
+extracted = []
 for row in data:
     for item in row:
         match = re.match(r'^/data_chunk "(.*)"$', item)
         if match:
-            extracted += match.group(1)
+            extracted.append(match.group(1))
+
+# 抽出した文字列を結合
+json_string = ''.join(extracted)
 
 # データをNumPy配列に変換
-data = np.array(json.loads(extracted))
+data = np.array(json.loads(json_string))
 # NaN除去
 data = np.nan_to_num(data)
 
