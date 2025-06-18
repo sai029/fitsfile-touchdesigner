@@ -17,9 +17,9 @@ for i in range(len(data[0])):
     frame = data[0, i, :, :]
 
     # 画像スケーリング（0〜255に正規化）
-    data_min = np.min(data)
-    data_max = np.max(data)
-    scaled_data = 255 * (data - data_min) / (data_max - data_min)
+    data_min = np.min(frame)
+    data_max = np.max(frame)
+    scaled_data = 255 * (frame - data_min) / (data_max - data_min)
     scaled_data = scaled_data.astype(np.uint8)
 
     # 画像の表示
