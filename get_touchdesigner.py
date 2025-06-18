@@ -8,11 +8,10 @@ data = [[cell.val for cell in row] for row in op('null1').rows()]
 
 # 正規表現で /data_chunk の後の文字列だけ抽出
 extracted = []
-for row in data:
-    for item in row:
-        match = re.match(r'^/data_chunk "(.*)"$', item)
-        if match:
-            extracted.append(match.group(1))
+for item in data:
+    match = re.match(r'^/data_chunk "(.*)"$', item)
+    if match:
+        extracted.append(match.group(1))
 
 # 抽出した文字列を結合
 json_string = ''.join(extracted)
