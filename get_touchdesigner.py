@@ -1,16 +1,24 @@
 import numpy as np
 from PIL import Image
 import json
+import re
 
 #fitsデータの受け取り
 data = [[cell.val for cell in row] for row in op('null1').rows()]
 
+# 正規表現で /data_chunk の後の文字列だけ抽出
+extracted = ""
+for row in data:
+    for item in row:
+        match = re.match(r'^/data_chunk "(.*)"$', item)
+        if match:
+            extracted += match.group(1)
+
 # データをNumPy配列に変換
-data = np.array(json.loads(data))
-
-
+data = np.array(json.loads(extracted))
 # NaN除去
 data = np.nan_to_num(data)
+
 
 #データの数だけフレームを表示
 for i in range(len(data[0])):

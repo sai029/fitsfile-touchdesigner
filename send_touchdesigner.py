@@ -14,17 +14,16 @@ client.send_message("/header", hdul[0].header)
 
 data = hdul[0].data
 
-#データを1次元に変換
-flat_data = data.flatten()
+json_data = json.dumps(data.tolist())  # NumPy配列をリストに変換してからJSONに変換
 
 chunk_size = 2000  # 送信するデータのチャンクサイズ
 
-for i in range(0, len(flat_data), chunk_size):
+for i in range(0, len(json_data), chunk_size):
     # データのチャンクを取得
-    chunk = flat_data[i:i + chunk_size].tolist()
+    chunk = json_data[i:i + chunk_size]
         
     # チャンクをJSON形式に変換して送信
-    client.send_message("/data_chunk", json.dumps(chunk))
+    client.send_message("/data_chunk", chunk)
 
 
 # ファイルを閉じる
